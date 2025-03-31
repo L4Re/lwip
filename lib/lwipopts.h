@@ -20,8 +20,6 @@ extern "C" {
 #define LWIP_L4                         1
 #define LWIP_DEBUG                      0
 
-#define LWIP_DHCP_DOES_ACD_CHECK 0
-
 /*
    ------------------------------------
    ----------- Core locking -----------
