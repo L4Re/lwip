@@ -5,7 +5,7 @@ TARGET         = liblwip_ifconfig_env.a liblwip_ifconfig_env.so
 LINK_INCR      = liblwip_ifconfig_env.a
 PC_FILENAME    = lwip_ifconfig_env
 SRC_CC         = lwip_ifconfig_env.cc
-REQUIRES_LIBS  = lwip
+REQUIRES_LIBS  = lwip libc_be_socket_lwip
 DEPENDS_PKGS   = $(REQUIRES_LIBS)
 
 include $(L4DIR)/mk/lib.mk
