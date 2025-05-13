@@ -16,6 +16,9 @@ SRC_C            = $(filter-out contrib/src/netif/slipif.c,$(LWIPNOAPPSFILES)) \
                    contrib/contrib/ports/unix/port/perf.c \
                    contrib/contrib/ports/unix/port/sys_arch.c
 
+# Required to get ifreq struct needed for SO_BINDTODEVICE socket option
+DEFINES_contrib/src/api/sockets.c += -D_BSD_SOURCE
+
 # ARCH-sparc/include/asm/socket.h is empty (missing SO_*) in uclibc
 SYSTEMS        = $(filter-out sparc-l4f,$(SYSTEMS_ABI))
 
