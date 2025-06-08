@@ -12,7 +12,8 @@ DEFINES          = -DLWIP_L4=1 -D_DEFAULT_SOURCE
 LWIPDIR          = contrib/src
 include $(PKGDIR)/lib/$(LWIPDIR)/Filelists.mk
 
-SRC_C            = $(filter-out contrib/src/netif/slipif.c,$(LWIPNOAPPSFILES)) \
+SRC_C            = $(filter-out contrib/src/netif/slipif.c \
+                                contrib/src/core/ipv6/inet6.c,$(LWIPNOAPPSFILES)) \
                    contrib/contrib/ports/unix/port/perf.c \
                    contrib/contrib/ports/unix/port/sys_arch.c
 
