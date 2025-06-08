@@ -2,6 +2,7 @@ PKGDIR          ?= ..
 L4DIR           ?= $(PKGDIR)/../..
 
 TARGET	         = liblwip.a liblwip.so
+LINK_INCR        = liblwip.a
 PC_FILENAME      = lwip
 REQUIRES_LIBS    = libpthread
 CONTRIB_INCDIR   = lwip \
@@ -16,6 +17,7 @@ SRC_C            = $(filter-out contrib/src/netif/slipif.c \
                                 contrib/src/core/ipv6/inet6.c,$(LWIPNOAPPSFILES)) \
                    contrib/contrib/ports/unix/port/perf.c \
                    contrib/contrib/ports/unix/port/sys_arch.c
+SRC_CC           = l4libinit.cc
 
 # ARCH-sparc/include/asm/socket.h is empty (missing SO_*) in uclibc
 SYSTEMS        = $(filter-out sparc-l4f,$(SYSTEMS_ABI))

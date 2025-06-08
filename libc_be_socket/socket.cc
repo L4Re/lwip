@@ -129,17 +129,6 @@ Socket_file::alloc_fd(int lwip_fd) throw()
 
   return fd;
 }
-
-struct Socket_backend { Socket_backend(); };
-
-Socket_backend::Socket_backend()
-{
-  // Start lwIP's TCPIP thread
-  tcpip_init(NULL, NULL);
-}
-
-Socket_backend sb __attribute__((init_priority(INIT_PRIO_TCPIP_INIT)));
-
 } // namespace
 
 int socket(int domain, int type, int protocol) throw()

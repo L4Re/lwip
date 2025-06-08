@@ -21,7 +21,6 @@
 #include <lwip/pbuf.h>
 #include <lwip/snmp.h>
 #include <lwip/sys.h>
-#include <lwip/tcpip.h>
 
 class Netdev
 {
