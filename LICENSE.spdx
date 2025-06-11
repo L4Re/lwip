@@ -8,7 +8,7 @@ SPDXVersion: SPDX-2.3
 DataLicense: CC0-1.0
 SPDXID: SPDXRef-DOCUMENT
 DocumentNamespace: spdx:l4re/lwip-f16d4a1f-7fa9-4125-92b2-cc8cd7c5b42c
-DocumentName: zlib
+DocumentName: lwip
 Creator: Organization: L4Re, info@l4re.org
 Created: 2025-03-30T00:00:00Z
 
