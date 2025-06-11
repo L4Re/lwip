@@ -64,13 +64,6 @@
 
 #include <string.h>
 
-#ifndef NOT_FOR_L4
-
-// L4Re: for gsignal()
-#include <signal.h>
-
-#endif // NOT_FOR_L4
-
 #ifdef LWIP_HOOK_FILENAME
 #include LWIP_HOOK_FILENAME
 #endif
@@ -1962,6 +1955,20 @@ lwip_sock_status_exception(int fd)
   return errevent != 0;
 }
 
+/**
+ * L4Re: Signal I/O operation/condition readiness.
+ *
+ * This potentially wakes up a thread that might be blocked on a select(),
+ * pselect(), poll() or ppoll() call.
+ *
+ * This is defined as a weak reference to the actual symbol in order to avoid
+ * tight coupling between lwIP and the client implementation of the select(),
+ * pselect(), poll() and ppoll() functionality.
+ */
+static void
+lwip_select_poll_notify(void)
+__attribute__((weakref("l4re_vfs_select_poll_notify")));
+
 #endif // NOT_FOR_L4
 
 #if LWIP_SOCKET_SELECT
@@ -2715,8 +2722,11 @@ event_callback(struct netconn *conn, enum netconn_evt evt, u16_t len)
   done_socket(sock);
 
 #ifndef NOT_FOR_L4
-  // L4Re: signal I/O readiness
-  gsignal(SIGURG);
+  // L4Re: signal I/O readiness to select(), pselect(), poll() and ppoll()
+  // (if that functionality is required, determined at link time).
+  if (lwip_select_poll_notify) {
+    lwip_select_poll_notify();
+  }
 #endif // NOT_FOR_L4
 }
 
