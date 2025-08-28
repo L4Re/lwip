@@ -1,5 +1,5 @@
 git://git.savannah.nongnu.org/lwip.git
-fbd597e4500bbd51c8872f1ab11e50dba075f291
+4599f551dead9eac233b91c0b9ee5879f5d0620a
 
 Upgrade procedure: Make sure to preserve the L4 changes in the lwIP source code.
 They are clearly marked using "L4" in preprocessor conditions or comments. The
